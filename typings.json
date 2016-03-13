@@ -1,0 +1,8 @@
+{
+  "ambientDependencies": {
+    "react": "registry:dt/react#0.14.0+20160302224448",
+    "react-addons-create-fragment": "registry:dt/react-addons-create-fragment#0.14.0+20151014232131",
+    "react-dom": "registry:dt/react-dom#0.14.0+20151118193745",
+    "react-global": "registry:dt/react-global#0.14.0+20151105120114"
+  }
+}

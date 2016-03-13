@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "system",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noEmitOnError": false,
+        "outFile": "dist/js/app.js",
+        "sourceMap": false,
+        "watch": true
+    },
+    "exclude": [
+        "typings/main", 
+        "typings/main.d.ts"
+    ]
+}
