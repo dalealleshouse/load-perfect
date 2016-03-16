@@ -59,7 +59,7 @@ namespace app.componets {
         logins: string[];
     }
 
-    class Main extends React.Component<{}, IMainState> {
+    export class Main extends React.Component<{}, IMainState> {
         constructor(props: {}) {
             super(props);
             this.state = { logins: [] };

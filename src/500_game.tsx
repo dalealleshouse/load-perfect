@@ -93,12 +93,7 @@ namespace app.game {
         };
 
         render() {
-            let numberOfStars = this.state.numberOfStars;
-            let selectedNumbers = this.state.selectedNumbers;
-            let usedNumbers = this.state.usedNumbers;
-            let correct = this.state.correct;
-            let redraws = this.state.redraws;
-            let doneStatus = this.state.doneStatus;
+            let {numberOfStars, selectedNumbers, usedNumbers, correct, redraws, doneStatus} = this.state;
 
             let bottomFrame: JSX.Element = (doneStatus) ?
                 (<DoneFrame doneStatus={doneStatus}
