@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "system",
+        "module": "commonjs",
         "moduleResolution": "node",
         "isolatedModules": false,
         "jsx": "react",
@@ -13,13 +13,18 @@
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "noEmitOnError": false,
-        "outFile": "dist/js/app.js",
+        "noEmitOnError": true,
+        "outDir": "temp",
         "sourceMap": false,
         "watch": false
     },
-    "exclude": [
-        "typings/main", 
-        "typings/main.d.ts"
+    "files": [
+        "src/app.tsx",
+        "src/global.ts",
+        "typings/browser.d.ts"
     ]
+    // "exclude": [
+    //     "typings/main", 
+    //     "typings/main.d.ts"
+    // ]
 }
