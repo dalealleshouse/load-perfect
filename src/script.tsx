@@ -80,6 +80,4 @@ namespace app.componets {
             this.setState({ logins: this.state.logins.concat(login) });
         };
     }
-
-    ReactDOM.render(<Main />, document.getElementById("root"));
 }
