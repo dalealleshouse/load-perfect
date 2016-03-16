@@ -7,9 +7,9 @@ namespace app.game {
 
     export class NumbersFrame extends React.Component<INumberFrameProperties, {}> {
         render() {
-            let numbers = Array.apply(null, Array(9))
-                .map((n, i) => i + 1)
-                .map((i) => (
+            let numbers: JSX.Element[] = Array.apply(null, Array(9))
+                .map((n: void, i: number) => i + 1)
+                .map((i: number) => (
                     <div key={i}
                         onClick={this.props.selectNumber.bind(null, i) }
                         className={this.getNumberClassName(this.props.selectedNumbers, this.props.usedNumbers, i) }>

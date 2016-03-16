@@ -8,7 +8,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "declaration": false,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
@@ -16,7 +16,7 @@
         "noEmitOnError": false,
         "outFile": "dist/js/app.js",
         "sourceMap": false,
-        "watch": true
+        "watch": false
     },
     "exclude": [
         "typings/main", 

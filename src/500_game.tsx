@@ -137,15 +137,15 @@ namespace app.game {
 
         private getPossibleNumbers() {
             return Array.apply(null, Array(9))
-                .map((n, i) => i + 1)
-                .filter(i => !this.state.usedNumbers.contains(i));
+                .map((n: void, i: number) => i + 1)
+                .filter((i: number) => !this.state.usedNumbers.contains(i));
         }
 
         private getRandomNumber() {
             return Math.floor(Math.random() * 9) + 1;
         }
 
-        private possibleCombinationSum(arr: number[], n: number) {
+        private possibleCombinationSum(arr: number[], n: number): boolean {
             if (arr.indexOf(n) >= 0) { return true; }
             if (arr[0] > n) { return false; }
             if (arr[arr.length - 1] > n) {

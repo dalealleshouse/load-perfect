@@ -6,6 +6,7 @@ namespace app.game {
         acceptAnswer(): void;
         redraw(): void;
         redraws: number;
+        foo?: string;
     }
 
     export class ButtonFrame extends React.Component<IButtonFrameProperties, {}> {
@@ -35,8 +36,13 @@ namespace app.game {
                     <button className="btn btn-warning btn-xs" onClick={this.props.redraw} disabled={this.props.redraws === 0}>
                         <span className="glyphicon glyphicon-refresh"></span>&nbsp; {this.props.redraws}
                     </button>
+                    <Tim smell="bad" />
                 </div>
             );
         }
+    }
+    
+    function Tim(props: {smell: string}){
+        return (<button>Tim smells: {props.smell}</button>);
     }
 }
