@@ -36,4 +36,4 @@ jspm_packages
 /.vscode
 /dist/**/*.js
 /typings
-/temp
+/dist

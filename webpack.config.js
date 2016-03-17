@@ -1,8 +1,8 @@
 module.exports = {
-    entry: "./src/app.tsx",
+    entry: "./src/js/app.tsx",
     output: {
-        path: __dirname,
-        filename: "dist/js/app.js"
+        path: __dirname + "/dist/",
+        filename: "app.js"
     },
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.

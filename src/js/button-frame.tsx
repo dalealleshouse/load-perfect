@@ -5,7 +5,6 @@ interface IButtonFrameProperties {
     acceptAnswer(): void;
     redraw(): void;
     redraws: number;
-    foo?: string;
 }
 
 export class ButtonFrame extends React.Component<IButtonFrameProperties, {}> {

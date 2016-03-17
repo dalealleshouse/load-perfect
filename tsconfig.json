@@ -19,8 +19,8 @@
         "watch": false
     },
     "files": [
-        "src/app.tsx",
-        "src/global.ts",
+        "src/js/app.tsx",
+        "src/js/global.ts",
         "typings/browser.d.ts"
     ]
     // "exclude": [
