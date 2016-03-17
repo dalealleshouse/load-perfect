@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
     entry: "./src/js/app.tsx",
@@ -22,6 +23,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+        new OpenBrowserPlugin({ url: 'http://localhost:8080/webpack-dev-server/' })
     ]
 };
