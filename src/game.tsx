@@ -33,7 +33,7 @@ export class Game extends React.Component<{}, IGameState> {
             return;
 
         this.setState({
-            selectedNumbers: this.state.selectedNumbers.concat(num),
+            selectedNumbers: [...this.state.selectedNumbers, num],
             correct: null
         });
     };
@@ -48,7 +48,7 @@ export class Game extends React.Component<{}, IGameState> {
     acceptAnswer = () => {
         this.setState({
             selectedNumbers: [],
-            usedNumbers: this.state.usedNumbers.concat(this.state.selectedNumbers),
+            usedNumbers: [...this.state.usedNumbers, ... this.state.selectedNumbers],
             numberOfStars: this.getRandomNumber(),
             correct: null
         }, this.updateDoneStatus);
