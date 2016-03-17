@@ -16,7 +16,8 @@
         "noEmitOnError": true,
         "outDir": "temp",
         "sourceMap": false,
-        "watch": false
+        "watch": false,
+        "noEmit": true
     },
     "files": [
         "src/js/app.tsx",
