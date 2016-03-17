@@ -1,3 +1,4 @@
+import * as React from "react";
 import {DoneFrame} from "./done-frame";
 import {NumbersFrame} from "./numbers-frame";
 import {StarsFrame} from "./stars-frame";

@@ -1,3 +1,5 @@
+import * as React from "react";
+
 interface IDoneFrameProperties {
     doneStatus: string;
     resetGame(): void;
