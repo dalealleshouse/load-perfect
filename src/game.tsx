@@ -123,7 +123,6 @@ export class Game extends React.Component<{}, IGameState> {
                     <AnswerFrame selectedNumbers={selectedNumbers}
                         unselectNumber={this.unselectNumber}/>
                 </div>
-
                 {bottomFrame}
             </div>
         );
