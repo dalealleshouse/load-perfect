@@ -1,4 +1,3 @@
-
 interface IStarsFrameProperties {
     numberOfStars: number;
 }

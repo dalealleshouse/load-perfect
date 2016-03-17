@@ -1,13 +1,14 @@
 
 declare var require: any;
 
-// Copy required files into dist directory
-require('file?name=[name].[ext]!../css/styles.css');
+require("!style!css!../css/styles.css");
+require("jquery");
+require("bootstrap-webpack");
 require('file?name=[name].[ext]!../index.html');
 require("./global");
 require("react");
 
-import {Game} from './game';
+import {Game} from "./game";
 
 ReactDOM.render(<Game />, document.getElementById("root"));
 
