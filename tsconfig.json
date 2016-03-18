@@ -17,15 +17,11 @@
         "outDir": "temp",
         "sourceMap": false,
         "watch": false,
-        "noEmit": true
+        "noEmit": false
     },
     "files": [
         "src/js/app.tsx",
         "src/js/global.ts",
         "typings/browser.d.ts"
     ]
-    // "exclude": [
-    //     "typings/main", 
-    //     "typings/main.d.ts"
-    // ]
 }

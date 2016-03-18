@@ -4,7 +4,7 @@
   "description": "Bar loading application",
   "main": "app.js",
   "scripts": {
-    "test": "test",
+    "test": "karma start",
     "start": "webpack-dev-server --progress --colors --open"
   },
   "repository": {
@@ -31,13 +31,22 @@
   "devDependencies": {
     "bootstrap": "^3.3.6",
     "bootstrap-webpack": "0.0.5",
+    "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "imports-loader": "^0.6.5",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-typescript-preprocessor": "0.0.21",
     "less": "^2.6.1",
     "less-loader": "^2.2.2",
     "open-browser-webpack-plugin": "0.0.2",
+    "phantomjs-prebuilt": "^2.1.5",
     "style-loader": "^0.13.0",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.9",
