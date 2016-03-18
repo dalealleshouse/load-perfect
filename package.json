@@ -43,6 +43,7 @@
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-typescript-preprocessor": "0.0.21",
+    "karma-webpack": "^1.7.0",
     "less": "^2.6.1",
     "less-loader": "^2.2.2",
     "open-browser-webpack-plugin": "0.0.2",

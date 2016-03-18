@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noEmitOnError": false,
+        //"outDir": "temp",
+        "sourceMap": false,
+        "watch": false,
+        "noEmit": false
+    },
+    "files": [
+        "app.spec.ts",
+        "../../typings/browser.d.ts"
+    ]
+}
