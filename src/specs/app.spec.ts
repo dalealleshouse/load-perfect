@@ -3,6 +3,7 @@ let expect = chai.expect;
 
 describe("test", () => {
     it("should fail", () => {
+        let df = new DoneFrame();
         expect(true).to.be.false;
     });
 
