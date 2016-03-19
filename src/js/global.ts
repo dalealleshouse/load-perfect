@@ -1,14 +1,5 @@
 export {}
 
-/* tslint:disable */
-declare global {
-    interface Array<T> {
-        contains(o: T): boolean;
-        remove(o: T): T[];
-    }
-}
-/* tslint:enable */
-
 Array.prototype.contains = function(o) {
     return this.indexOf(o) >= 0;
 };

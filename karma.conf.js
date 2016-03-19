@@ -15,7 +15,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'src/specs/**/*.ts'
+            'src/specs/**/*.spec.ts'
         ],
 
 
@@ -67,9 +67,13 @@ module.exports = function(config) {
         concurrency: Infinity,
 
         webpack: {
+            resolve: {
+                extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+            },
             module: {
                 loaders: [
-                    { test: /\.tsx?$/, loader: 'ts-loader' }
+                    { test: /\.tsx?$/, loader: 'ts-loader' },
+                    { test: /\.ts?$/, loader: 'ts-loader' }
                 ]
             }
         }

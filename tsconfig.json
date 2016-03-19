@@ -22,6 +22,7 @@
     "files": [
         "src/js/app.tsx",
         "src/js/global.ts",
-        "typings/browser.d.ts"
+        "typings/browser.d.ts",
+        "src/js/globals.d.ts"
     ]
 }
