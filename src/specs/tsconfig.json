@@ -21,6 +21,7 @@
     },
     "files": [
         "app.spec.ts",
-        "../../typings/browser.d.ts"
+        "../../typings/browser.d.ts",
+        "../js/globals.d.ts"
     ]
 }
