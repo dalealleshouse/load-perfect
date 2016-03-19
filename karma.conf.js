@@ -10,7 +10,7 @@ module.exports = function(config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
+        frameworks: ['mocha', 'chai'],
 
 
         // list of files / patterns to load in the browser
@@ -71,13 +71,7 @@ module.exports = function(config) {
                 loaders: [
                     { test: /\.tsx?$/, loader: 'ts-loader' }
                 ]
-            }//,
-            // plugins: [
-            //     new webpack.ProvidePlugin({
-            //         $: "jquery",
-            //         jQuery: "jquery"
-            //     })
-            // ]
+            }
         }
     })
 }

@@ -1,13 +1,12 @@
 import {DoneFrame} from "../js/done-frame";
+let expect = chai.expect;
 
 describe("test", () => {
     it("should fail", () => {
-        let df = new DoneFrame();
-       expect(false).toBe(true);
+        expect(true).to.be.false;
     });
-    
-    fit("should pass", () => {
-        let df = new DoneFrame();
-       expect(false).toBe(false);
+
+    it("should pass", () => {
+       expect (true).to.be.true;
     });
 });
