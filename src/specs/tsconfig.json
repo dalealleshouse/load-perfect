@@ -18,10 +18,5 @@
         "sourceMap": false,
         "watch": false,
         "noEmit": false
-    },
-    "files": [
-        "app.spec.ts",
-        "../../typings/browser.d.ts",
-        "../js/globals.d.ts"
-    ]
+    }
 }
