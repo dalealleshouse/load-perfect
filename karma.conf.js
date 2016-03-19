@@ -75,7 +75,14 @@ module.exports = function(config) {
                     { test: /\.tsx?$/, loader: 'ts-loader' },
                     { test: /\.ts?$/, loader: 'ts-loader' }
                 ]
-            }
+            },
+            stats: 'errors-only'
+        },
+
+        webpackMiddleware: {
+            // webpack-dev-middleware configuration
+            // i. e.
+            noInfo: true
         }
     })
 }
