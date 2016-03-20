@@ -1,15 +1,14 @@
 import { IPlate } from "./plates";
 import { WeightUnit } from "./weight-units";
 
-interface IPlateCalculation {
+export interface IPlateCalculation {
     requestedWeight: number;
     actualWeight: number;
     plates: IPlate[];
 }
 
 export function minWeight(weightTree: IPlate[]): number {
-    if (!weightTree || weightTree.length === 0)
-        return 0;
+    if (!weightTree || weightTree.length === 0) return 0;
 
     return _.min(_.map(weightTree, w => w.weight));
 }
@@ -43,10 +42,8 @@ export function platesPerSide(weightTree: IPlate[], desiredWeightMinusBar: numbe
 
     // I'm sure there is a much more preformant way to do this...
     // if it ever becomes a problem, I'll deal with it then...
-    function recursiveGetPlates(weightTree: IPlate[], plates: IPlate[], weight: number) {
-        if (!weight || weight < minTreeWeight) {
-            return plates;
-        }
+    function recursiveGetPlates(weightTree: IPlate[], plates: IPlate[], weight: number): IPlate[] {
+        if (!weight || weight < minTreeWeight) return plates;
 
         let index = _.findIndex(weightTree, w => w.weight * 2 <= weight);
         let plate = weightTree[index];
@@ -54,6 +51,8 @@ export function platesPerSide(weightTree: IPlate[], desiredWeightMinusBar: numbe
         return (!plate) ?
             plates :
             recursiveGetPlates(
+                // It's strange, but the way this is transpiled, the splice(0, index) 
+                // will be at the head of the array
                 [...weightTree.slice(index + 1), ...weightTree.splice(0, index)],
                 [...plates, plate],
                 weight - (plate.weight * 2));

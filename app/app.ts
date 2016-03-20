@@ -1,4 +1,3 @@
-import { StandardPlates } from "./plates";
+import { calculatePlates } from "./plate-calculator";
 
-console.log(StandardPlates);
-console.log(StandardPlates);
+console.log(calculatePlates);
