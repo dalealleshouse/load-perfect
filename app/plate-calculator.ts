@@ -72,7 +72,7 @@ export function calculatePlates(weightTree: IPlate[], totalWeightOfBar: number, 
 
     return {
         requestedWeight: desiredWeight,
-        actualWeight: totalPlateWeight(ps.plates) + totalWeightOfBar,
+        actualWeight: ps.actualWeight + totalWeightOfBar,
         plates: ps.plates
-    }
+    };
 }

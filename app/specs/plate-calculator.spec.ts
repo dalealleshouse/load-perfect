@@ -99,12 +99,19 @@ describe("plate calculator", () => {
 
         it("return 1 45 plate for 135", () => {
             let result = calculatePlates(DefaultLbsWeightTree, StandardLbsBar.weight, 135);
-            console.log(result);
-            console.log(result.plates);
             expect(result).to.eqls({
                 requestedWeight: 135,
                 actualWeight: 135,
                 plates: buildPlates("lbs", 45)
+            });
+        });
+
+        it("return as close as possible for unreachable weight", () => {
+            let result = calculatePlates(DefaultLbsWeightTree, StandardLbsBar.weight, 152);
+            expect(result).to.eqls({
+                requestedWeight: 152,
+                actualWeight: 150,
+                plates: buildPlates("lbs", 45, 5, 2.5)
             });
         });
     });
