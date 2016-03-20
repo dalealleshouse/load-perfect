@@ -2,7 +2,7 @@ var webpack = require("webpack");
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-    entry: "./src/js/app.tsx",
+    entry: "./app/app.ts",
     output: {
         path: __dirname + "/dist/",
         filename: "app.js"
@@ -12,7 +12,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.tsx?$/, loader: 'ts-loader' },
+            { test: /\.ts?$/, loader: 'ts-loader' },
+            //{ test: /\.tsx$/, loader: 'ts-loader' },
             { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
             { test: /\.ttf$/, loader: "file-loader" },
             { test: /\.eot$/, loader: "file-loader" },

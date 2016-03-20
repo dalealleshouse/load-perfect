@@ -14,9 +14,13 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "noEmitOnError": false,
-        //"outDir": "temp",
+        "outDir": "temp",
         "sourceMap": false,
         "watch": false,
         "noEmit": false
-    }
+    },
+    "files": [
+        "app.ts",
+        "globals.d.ts"
+    ]
 }

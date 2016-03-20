@@ -8,21 +8,14 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "declaration": false,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "noEmitOnError": true,
-        "outDir": "temp",
+        "noEmitOnError": false,
         "sourceMap": false,
         "watch": false,
         "noEmit": false
-    },
-    "files": [
-        "src/js/app.tsx",
-        "src/js/global.ts",
-        "typings/browser.d.ts",
-        "src/js/globals.d.ts"
-    ]
+    }
 }
