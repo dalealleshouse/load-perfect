@@ -89,6 +89,17 @@ describe("plate calculator", () => {
             expect(result.requestedWeight).to.eql(1);
             expect(result.actualWeight).to.eql(0);
         });
+
+        it("calculate plates if plate tree is not in order", () => {
+            let result = platesPerSide(buildPlates("lbs", 5, 10, 25, 45, 100), 300);
+            expect(result)
+                .to
+                .eqls({
+                    requestedWeight: 300,
+                    actualWeight: 300,
+                    plates: buildPlates("lbs", 100, 45, 5)
+                });
+        });
     });
 
     describe("calculatePlates should", () => {
@@ -112,6 +123,15 @@ describe("plate calculator", () => {
                 requestedWeight: 152,
                 actualWeight: 150,
                 plates: buildPlates("lbs", 45, 5, 2.5)
+            });
+        });
+
+        it("work for large numbers", () => {
+            let result = calculatePlates(DefaultLbsWeightTree, StandardLbsBar.weight, 800);
+            expect(result).to.eqls({
+                requestedWeight: 800,
+                actualWeight: 800,
+                plates: buildPlates("lbs", 100, 100, 100, 45, 25, 5, 2.5)
             });
         });
     });

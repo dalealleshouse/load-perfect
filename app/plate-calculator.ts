@@ -32,7 +32,8 @@ export function platesPerSide(weightTree: IPlate[], desiredWeightMinusBar: numbe
     }
 
     let minTreeWeight = minWeight(weightTree);
-    let plates = recursiveGetPlates(weightTree.slice(), [], desiredWeightMinusBar);
+    let newSortedTree = weightTree.slice().sort((a, b) => b.weight - a.weight);
+    let plates = recursiveGetPlates(newSortedTree, [], desiredWeightMinusBar);
 
     return {
         requestedWeight: desiredWeightMinusBar,
@@ -47,8 +48,8 @@ export function platesPerSide(weightTree: IPlate[], desiredWeightMinusBar: numbe
             return plates;
         }
 
-        let plate = _.find(weightTree, w => w.weight * 2 <= weight);
-        let index = _.indexOf(weightTree, plate);
+        let index = _.findIndex(weightTree, w => w.weight * 2 <= weight);
+        let plate = weightTree[index];
 
         return (!plate) ?
             plates :
