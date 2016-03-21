@@ -1,5 +1,4 @@
 import * as tsm from "tsmonad";
-import * as _ from "lodash";
 import { WeightUnit } from "./weight-units";
 
 export type PlateColor = "red" | "blue" | "yellow" | "green" | "white" | "black";
@@ -48,13 +47,22 @@ export function getPlates(unit: WeightUnit): tsm.Maybe<IPlate[]> {
 export function findPlate(unit: WeightUnit, weight: number): tsm.Maybe<IPlate> {
     return getPlates(unit)
         .bind(plates => {
-            let plate = _.find(plates, { weight: weight });
-            return (plate) ? tsm.Maybe.just(plate) : tsm.Maybe.nothing();
+            return plates
+                .find(p => p.weight === weight)
+                .caseOf({
+                    just: p => tsm.Maybe.just(p),
+                    nothing: () => tsm.Maybe.nothing()
+                });
         });
 }
 
 export function findPlateOrError(unit: WeightUnit, weight: number): IPlate {
-    let plate = _.find(Plates[unit], { weight: weight });
+    let plate = Plates[unit]
+        .find(p => p.weight === weight)
+        .caseOf({
+            just: p => p,
+            nothing: () => null
+        });
 
     if (plate) return plate;
 

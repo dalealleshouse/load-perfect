@@ -10,7 +10,9 @@ export interface IPlateCalculation {
 export function minWeight(weightTree: IPlate[]): number {
     if (!weightTree || weightTree.length === 0) return 0;
 
-    return _.min(_.map(weightTree, w => w.weight));
+    return weightTree
+        .map(w => w.weight)
+        .reduce((prev, curr) => (curr >= prev) ? prev : curr);
 }
 
 export function totalPlateWeight(weightTree: IPlate[]): number {
@@ -45,7 +47,12 @@ export function platesPerSide(weightTree: IPlate[], desiredWeightMinusBar: numbe
     function recursiveGetPlates(weightTree: IPlate[], plates: IPlate[], weight: number): IPlate[] {
         if (!weight || weight < minTreeWeight) return plates;
 
-        let index = _.findIndex(weightTree, w => w.weight * 2 <= weight);
+        let index = weightTree
+            .findIndex(w => w.weight * 2 <= weight)
+            .caseOf({
+                just: ind => ind,
+                nothing: () => -1
+            });
         let plate = weightTree[index];
 
         return (!plate) ?

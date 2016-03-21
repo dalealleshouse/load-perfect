@@ -1,7 +1,6 @@
 let expect = chai.expect;
 import * as tsm from "tsmonad";
 import { StandardPlates, MetricPlates, IPlate, findPlate, getPlates, DefaultLbsWeightTree, DefaultKiloWeightTree } from "./../plates";
-import * as _ from "lodash";
 
 describe("plates", () => {
     function isNothing<T>(maybe: tsm.Maybe<T>) {
@@ -60,14 +59,14 @@ describe("plates", () => {
 
     describe("DefaultLbsWeightTree should", () => {
         it("have all lbs unit plates", () => {
-            let allStandardPlates = _.every(DefaultLbsWeightTree, { unit: "lbs" });
+            let allStandardPlates = DefaultLbsWeightTree.every(w => w.unit === "lbs");
             expect(allStandardPlates).to.be.true;
         });
     });
 
     describe("DefaultKiloWeightTree should", () => {
         it("have all kilo unit plates", () => {
-            let allStandardPlates = _.every(DefaultKiloWeightTree, { unit: "kilo" });
+            let allStandardPlates = DefaultKiloWeightTree.every(w => w.unit === "kilo");
             expect(allStandardPlates).to.be.true;
         });
     });
