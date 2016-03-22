@@ -1,4 +1,5 @@
 let expect = chai.expect;
+import "es6-shim";
 import "./../../global";
 import { IPlate, defaultLbsWeightTree, defaultKiloWeightTree, findPlateOrError } from "./../../calculator/plates";
 import { platesPerSide, minWeight, totalPlateWeight, calculatePlates } from "./../../calculator/plate-calculator";

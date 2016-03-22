@@ -47,22 +47,15 @@ export function getPlates(unit: WeightUnit): tsm.Maybe<IPlate[]> {
 export function findPlate(unit: WeightUnit, weight: number): tsm.Maybe<IPlate> {
     return getPlates(unit)
         .bind(plates => {
-            return plates
-                .find(p => p.weight === weight)
-                .caseOf({
-                    just: p => tsm.Maybe.just(p),
-                    nothing: () => tsm.Maybe.nothing()
-                });
+            var p = plates.find(p => p.weight === weight);
+            
+            return (p) ? tsm.Maybe.just(p) : tsm.Maybe.nothing();
         });
 }
 
 export function findPlateOrError(unit: WeightUnit, weight: number): IPlate {
     let plate = plates[unit]
-        .find(p => p.weight === weight)
-        .caseOf({
-            just: p => p,
-            nothing: () => null
-        });
+        .find(p => p.weight === weight);
 
     if (plate) return plate;
 

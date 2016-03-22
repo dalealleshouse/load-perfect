@@ -2,6 +2,7 @@ import * as React from "react";
 import { IPlate, proportinalWidth, proportinalHeight } from "./../../calculator/plates";
 
 import "!style!css!less!./plate.less";
+let styles = require<{plate:string}>("!style!css!less!./plate.less");
 
 interface IPlateProperties {
     plate: IPlate;

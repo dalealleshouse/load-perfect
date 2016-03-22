@@ -1,3 +1,4 @@
+import "es6-shim";
 import { IPlate } from "./plates";
 import { WeightUnit } from "./weight-units";
 
@@ -48,11 +49,8 @@ export function platesPerSide(weightTree: IPlate[], desiredWeightMinusBar: numbe
         if (!weight || weight < minTreeWeight) return plates;
 
         let index = weightTree
-            .findIndex(w => w.weight * 2 <= weight)
-            .caseOf({
-                just: ind => ind,
-                nothing: () => -1
-            });
+            .findIndex(w => w.weight * 2 <= weight);
+
         let plate = weightTree[index];
 
         return (!plate) ?
