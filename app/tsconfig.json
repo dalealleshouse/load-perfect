@@ -20,7 +20,7 @@
         "noEmit": false
     },
     "files": [
-        "app.ts",
+        "app.tsx",
         "globals.d.ts"
     ]
 }

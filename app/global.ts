@@ -1,5 +1,5 @@
 import * as tsm from "tsmonad";
-import { calculatePlates } from "./plate-calculator";
+import { calculatePlates } from "./calculator/plate-calculator";
 
 Array.prototype.find = function find<T>(o: predicate<T>) {
     let found: T[] = this.filter((i: T) => o(i));

@@ -31,8 +31,6 @@
     "tsmonad": "^0.4.1"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.6",
-    "bootstrap-webpack": "0.0.5",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "exports-loader": "^0.6.3",
@@ -49,7 +47,7 @@
     "less-loader": "^2.2.2",
     "mocha": "^2.4.5",
     "open-browser-webpack-plugin": "0.0.2",
-    "phantomjs-prebuilt": "^2.1.5",
+    "phantomjs-prebuilt": "^2.1.6",
     "style-loader": "^0.13.0",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.9",

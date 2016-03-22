@@ -1,6 +1,8 @@
 let expect = chai.expect;
 import * as tsm from "tsmonad";
-import { StandardPlates, MetricPlates, IPlate, findPlate, getPlates, DefaultLbsWeightTree, DefaultKiloWeightTree } from "./../plates";
+import { lbsPlates, kiloPlates, IPlate, findPlate, getPlates,
+    proportinalHeight, proportinalWidth, defaultLbsWeightTree,
+    defaultKiloWeightTree, findPlateOrError } from "./../../calculator/plates";
 
 describe("plates", () => {
     function isNothing<T>(maybe: tsm.Maybe<T>) {
@@ -15,7 +17,7 @@ describe("plates", () => {
                     nothing: () => null
                 });
 
-            expect(result).to.equal(StandardPlates);
+            expect(result).to.equal(lbsPlates);
         });
 
         it("return metric weight plates when asking for kilo", () => {
@@ -25,7 +27,7 @@ describe("plates", () => {
                     nothing: () => null
                 });
 
-            expect(result).to.equal(MetricPlates);
+            expect(result).to.equal(kiloPlates);
         });
 
         it("should return Maybe.nothing when asking for null", () => {
@@ -53,21 +55,33 @@ describe("plates", () => {
                 });
 
             // this should be doing a reference equal
-            expect(result).to.equal(StandardPlates[0]);
+            expect(result).to.equal(lbsPlates[0]);
         });
     });
 
     describe("DefaultLbsWeightTree should", () => {
         it("have all lbs unit plates", () => {
-            let allStandardPlates = DefaultLbsWeightTree.every(w => w.unit === "lbs");
+            let allStandardPlates = defaultLbsWeightTree.every(w => w.unit === "lbs");
             expect(allStandardPlates).to.be.true;
         });
     });
 
     describe("DefaultKiloWeightTree should", () => {
         it("have all kilo unit plates", () => {
-            let allStandardPlates = DefaultKiloWeightTree.every(w => w.unit === "kilo");
+            let allStandardPlates = defaultKiloWeightTree.every(w => w.unit === "kilo");
             expect(allStandardPlates).to.be.true;
+        });
+    });
+
+    describe("proportinalWidth should", () => {
+        it("return max plate width for a 100 lb weight", () => {
+            let result = proportinalWidth(findPlateOrError("lbs", 100), 60, 25);
+            expect(result).to.eq(60);
+        });
+
+        it("return min plate width for a 2.5 lb weight", () => {
+            let result = proportinalWidth(findPlateOrError("lbs", 2.5), 60, 25);
+            expect(result).to.be.above(25).and.to.be.below(26);
         });
     });
 });
