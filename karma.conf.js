@@ -72,8 +72,7 @@ module.exports = function(config) {
             },
             module: {
                 loaders: [
-                    { test: /\.tsx?$/, loader: 'ts-loader' },
-                    { test: /\.ts?$/, loader: 'ts-loader' }
+                    { test: /\.tsx?$/, loader: 'ts-loader' }
                 ]
             },
             stats: 'errors-only'
