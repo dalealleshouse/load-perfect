@@ -7,30 +7,31 @@ export interface IPlate {
     unit: WeightUnit;
     weight: number;
     color: PlateColor;
+    scaleHeight: boolean;
 }
 
 export const lbsPlates: IPlate[] = [
-    { unit: "lbs", weight: 100, color: "black" },
-    { unit: "lbs", weight: 55, color: "red" },
-    { unit: "lbs", weight: 45, color: "blue" },
-    { unit: "lbs", weight: 35, color: "yellow" },
-    { unit: "lbs", weight: 25, color: "green" },
-    { unit: "lbs", weight: 10, color: "white" },
-    { unit: "lbs", weight: 5, color: "blue" },
-    { unit: "lbs", weight: 2.5, color: "green" }
+    { unit: "lbs", weight: 100, color: "black", scaleHeight: false },
+    { unit: "lbs", weight: 55, color: "red", scaleHeight: false },
+    { unit: "lbs", weight: 45, color: "blue", scaleHeight: false },
+    { unit: "lbs", weight: 35, color: "yellow", scaleHeight: true },
+    { unit: "lbs", weight: 25, color: "green", scaleHeight: true },
+    { unit: "lbs", weight: 10, color: "white", scaleHeight: true },
+    { unit: "lbs", weight: 5, color: "blue", scaleHeight: true },
+    { unit: "lbs", weight: 2.5, color: "green", scaleHeight: true }
 ];
 
 export const kiloPlates: IPlate[] = [
-    { unit: "kilo", weight: 25, color: "red" },
-    { unit: "kilo", weight: 20, color: "blue" },
-    { unit: "kilo", weight: 15, color: "yellow" },
-    { unit: "kilo", weight: 10, color: "green" },
-    { unit: "kilo", weight: 5, color: "white" },
-    { unit: "kilo", weight: 2.5, color: "red" },
-    { unit: "kilo", weight: 2, color: "blue" },
-    { unit: "kilo", weight: 1.5, color: "yellow" },
-    { unit: "kilo", weight: 1, color: "green" },
-    { unit: "kilo", weight: 0.5, color: "white" }
+    { unit: "kilo", weight: 25, color: "red", scaleHeight: false },
+    { unit: "kilo", weight: 20, color: "blue", scaleHeight: false },
+    { unit: "kilo", weight: 15, color: "yellow", scaleHeight: false },
+    { unit: "kilo", weight: 10, color: "green", scaleHeight: false },
+    { unit: "kilo", weight: 5, color: "white", scaleHeight: true },
+    { unit: "kilo", weight: 2.5, color: "red", scaleHeight: true },
+    { unit: "kilo", weight: 2, color: "blue", scaleHeight: true },
+    { unit: "kilo", weight: 1.5, color: "yellow", scaleHeight: true },
+    { unit: "kilo", weight: 1, color: "green", scaleHeight: true },
+    { unit: "kilo", weight: 0.5, color: "white", scaleHeight: true }
 ];
 
 // How f'n awesome would it be if I could make the Indentifer type WeightUnit...
@@ -92,26 +93,3 @@ export const defaultKiloWeightTree: IPlate[] = [
     findPlateOrError("kilo", 1),
     findPlateOrError("kilo", 0.5)
 ];
-
-export function proportinalWidth(plate: IPlate, maxPlateWidth: number, minPlateWidth: number) {
-    let base = (plate.unit === "lbs") ? plate.weight : plate.weight * 2;
-
-    // The largest a plate should be is 60 and the smallest is 25
-    let scale = maxPlateWidth - minPlateWidth;
-    let maxPlate = 100;
-    return (base * (scale / maxPlate)) + minPlateWidth;
-}
-
-export function proportinalHeight(plate: IPlate) {
-    switch (plate.unit) {
-        case "lbs":
-            return (plate.weight > 35) ? 200 : ((plate.weight / 7) + 9) * 12;
-        case "kilo":
-            return (plate.weight > 5) ? 200 : (plate.weight + 10) * 11;
-        default:
-            break;
-    }
-
-    let base = (plate.unit === "kilo") ? plate.weight * 2 : plate.weight;
-    return (base > 25) ? 200 : (plate.weight + 15) * 4;
-}

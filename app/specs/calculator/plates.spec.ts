@@ -1,7 +1,6 @@
 let expect = chai.expect;
 import * as tsm from "tsmonad";
-import { lbsPlates, kiloPlates, IPlate, findPlate, getPlates,
-    proportinalHeight, proportinalWidth, defaultLbsWeightTree,
+import { lbsPlates, kiloPlates, IPlate, findPlate, getPlates, defaultLbsWeightTree,
     defaultKiloWeightTree, findPlateOrError } from "./../../calculator/plates";
 
 describe("plates", () => {
@@ -70,18 +69,6 @@ describe("plates", () => {
         it("have all kilo unit plates", () => {
             let allStandardPlates = defaultKiloWeightTree.every(w => w.unit === "kilo");
             expect(allStandardPlates).to.be.true;
-        });
-    });
-
-    describe("proportinalWidth should", () => {
-        it("return max plate width for a 100 lb weight", () => {
-            let result = proportinalWidth(findPlateOrError("lbs", 100), 60, 25);
-            expect(result).to.eq(60);
-        });
-
-        it("return min plate width for a 2.5 lb weight", () => {
-            let result = proportinalWidth(findPlateOrError("lbs", 2.5), 60, 25);
-            expect(result).to.be.above(25).and.to.be.below(26);
         });
     });
 });
