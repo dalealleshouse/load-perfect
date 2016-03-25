@@ -51,7 +51,7 @@ export class BarLoader extends React.Component<{}, IBarLoaderState> {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-3">
                         <form className="form-horizontal">
                             <fieldset>
                                 <div className="form-group">
@@ -89,7 +89,7 @@ export class BarLoader extends React.Component<{}, IBarLoaderState> {
                             </fieldset>
                         </form>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-9">
                         <Bar plates={this.state.calculation.plates} />
                         <span>ActualWeight: {this.state.calculation.actualWeight}</span>
                     </div>

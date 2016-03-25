@@ -3,9 +3,9 @@ import { IPlate } from "./../../calculator/plates";
 import { Plate } from "./../plate/plate";
 
 import "!style!css!less!./bar.less";
-let barLeft = require<string>("./bar-left.jpg");
-let bar = require<string>("./bar.jpg");
-let barRight = require<string>("./bar-right.jpg");
+let barLeft = require<string>("./bar-left.png");
+let bar = require<string>("./bar.png");
+let barRight = require<string>("./bar-right.png");
 
 interface IBarProperties {
     plates: IPlate[];
