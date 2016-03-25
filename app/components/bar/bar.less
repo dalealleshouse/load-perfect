@@ -1,9 +1,29 @@
-.bar {
+.barMixin {
+    display: inline-block;
     height: 200px;
     position: relative;
 }
 
-.bar:before, .plate:before {      /* create a full-height inline block pseudo-element */
+.bar {
+    width: 85%;
+    position: relative;
+    .barMixin();
+}
+
+.bar-left {
+    width: 5%;
+    background-repeat: no-repeat;
+    background-position: right;
+    .barMixin();
+}
+
+.bar-right {
+    width: 5%;
+    background-repeat: no-repeat;
+    .barMixin();
+}
+
+.bar:before, .plate:before, .bar-left:before, .bar-right:before {      /* create a full-height inline block pseudo-element */
     content: ' ';
     display: inline-block;
     vertical-align: middle; /* vertical alignment of the inline element */

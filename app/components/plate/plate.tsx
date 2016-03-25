@@ -13,7 +13,7 @@ export class Plate extends React.Component<IPlateProperties, {}> {
         let s: React.HTMLAttributes = {
             backgroundColor: this.props.plate.color,
             width: proportinalWidth(this.props.plate, 60, 25),
-            height: proportinalHeight(this.props.plate, 200, 50)
+            height: proportinalHeight(this.props.plate, 198, 50)
         };
 
         return (<div className="plate" style={s}>

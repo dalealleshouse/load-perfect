@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/dalealleshouse/load-perfect#readme",
   "dependencies": {
+    "bootstrap": "^3.3.6",
+    "bootstrap-webpack": "0.0.5",
     "es6-shim": "^0.35.0",
     "jquery": "^2.2.1",
     "react": "^0.14.7",

@@ -3,6 +3,9 @@ import { IPlate } from "./../../calculator/plates";
 import { Plate } from "./../plate/plate";
 
 import "!style!css!less!./bar.less";
+let barLeft = require<string>("./bar-left.jpg");
+let bar = require<string>("./bar.jpg");
+let barRight = require<string>("./bar-right.jpg");
 
 interface IBarProperties {
     plates: IPlate[];
@@ -10,8 +13,12 @@ interface IBarProperties {
 
 export class Bar extends React.Component<IBarProperties, {}> {
     render() {
-        return (<div className="bar">
-            {this.props.plates.map((p, i) => (<Plate key={i} plate={p} />))}
+        return (<div className="bar-container">
+            <div className="bar-left"style={{ backgroundImage: `url(${barLeft})` }}></div>
+            <div className="bar" style={{ backgroundImage: `url(${bar})` }}>
+                {this.props.plates.map((p, i) => (<Plate key={i} plate={p} />)) }
+            </div>
+            <div className="bar-right"style={{ backgroundImage: `url(${barRight})` }}></div>
         </div>);
     }
 }

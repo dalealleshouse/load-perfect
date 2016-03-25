@@ -13,11 +13,12 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.tsx?$/, loader: 'ts-loader' },
-            // { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            // { test: /\.ttf$/, loader: "file-loader" },
-            // { test: /\.eot$/, loader: "file-loader" },
-            // { test: /\.svg$/, loader: "file-loader" },
-            // { test: /\.css$/, loader: "style-loader!css-loader" }
+            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+            { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+            { test: /\.ttf$/, loader: "file-loader" },
+            { test: /\.eot$/, loader: "file-loader" },
+            { test: /\.svg$/, loader: "file-loader" },
+            { test: /\.css$/, loader: "style-loader!css-loader" }
         ]
     },
     plugins: [
