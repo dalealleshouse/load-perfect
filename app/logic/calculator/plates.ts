@@ -1,7 +1,7 @@
-import * as tsm from "tsmonad";
 import { WeightUnit } from "./weight-units";
+import * as TsMonad from "tsmonad";
 
-export type PlateColor = "red" | "blue" | "yellow" | "green" | "white" | "black";
+type PlateColor = "red" | "blue" | "yellow" | "green" | "white" | "black";
 
 export interface IPlate {
     unit: WeightUnit;
@@ -10,7 +10,7 @@ export interface IPlate {
     scaleHeight: boolean;
 }
 
-export const lbsPlates: IPlate[] = [
+const lbsPlates: IPlate[] = [
     { unit: "lbs", weight: 100, color: "black", scaleHeight: false },
     { unit: "lbs", weight: 55, color: "red", scaleHeight: false },
     { unit: "lbs", weight: 45, color: "blue", scaleHeight: false },
@@ -21,7 +21,7 @@ export const lbsPlates: IPlate[] = [
     { unit: "lbs", weight: 2.5, color: "green", scaleHeight: true }
 ];
 
-export const kiloPlates: IPlate[] = [
+const kiloPlates: IPlate[] = [
     { unit: "kilo", weight: 25, color: "red", scaleHeight: false },
     { unit: "kilo", weight: 20, color: "blue", scaleHeight: false },
     { unit: "kilo", weight: 15, color: "yellow", scaleHeight: false },
@@ -34,36 +34,31 @@ export const kiloPlates: IPlate[] = [
     { unit: "kilo", weight: 0.5, color: "white", scaleHeight: true }
 ];
 
-// How f'n awesome would it be if I could make the Indentifer type WeightUnit...
-export const plates: { [Identifier: string]: IPlate[] } = {
+// How f'n awesome would it be if I could make the key type WeightUnit...
+const plates: { [key: string]: IPlate[] } = {
     "lbs": lbsPlates,
     "kilo": kiloPlates
 };
 
-export function getPlates(unit: WeightUnit): tsm.Maybe<IPlate[]> {
-    let p = plates[unit];
-    return (p) ? tsm.Maybe.just(p) : tsm.Maybe.nothing();
-}
+const getPlatesFromDictonary =
+    (plateDictonary: { [Identifier: string]: IPlate[] }) =>
+        (unit: WeightUnit) =>
+            (plateDictonary[unit]) ? TsMonad.Maybe.just(plateDictonary[unit]) : TsMonad.Maybe.nothing();;
 
-export function findPlate(unit: WeightUnit, weight: number): tsm.Maybe<IPlate> {
-    return getPlates(unit)
-        .bind(plates => {
-            let p = plates.find(p => p.weight === weight);
+export const getPlates = getPlatesFromDictonary(plates);
 
-            return (p) ? tsm.Maybe.just(p) : tsm.Maybe.nothing();
-        });
-}
+export const findPlate = (unit: WeightUnit, weight: number) => getPlates(unit)
+    .fmap(plates => plates.find(p => p.weight === weight));
 
 export function findPlateOrError(unit: WeightUnit, weight: number): IPlate {
-    let plate = plates[unit]
-        .find(p => p.weight === weight);
+    let plate = findPlate(unit, weight).valueOr(undefined);
 
     if (plate) return plate;
 
     throw new Error("Unable to find specified plate");
 }
 
-export const defaultLbsWeightTree: IPlate[] = [
+const defaultLbsWeightTree: IPlate[] = [
     findPlateOrError("lbs", 100),
     findPlateOrError("lbs", 100),
     findPlateOrError("lbs", 100),
@@ -77,7 +72,7 @@ export const defaultLbsWeightTree: IPlate[] = [
     findPlateOrError("lbs", 2.5)
 ];
 
-export const defaultKiloWeightTree: IPlate[] = [
+const defaultKiloWeightTree: IPlate[] = [
     findPlateOrError("kilo", 25),
     findPlateOrError("kilo", 25),
     findPlateOrError("kilo", 25),
@@ -93,3 +88,10 @@ export const defaultKiloWeightTree: IPlate[] = [
     findPlateOrError("kilo", 1),
     findPlateOrError("kilo", 0.5)
 ];
+
+const defaultPlates: { [Identifier: string]: IPlate[] } = {
+    "lbs": defaultLbsWeightTree,
+    "kilo": defaultKiloWeightTree
+};
+
+export const getDefaultPlates = getPlatesFromDictonary(defaultPlates);

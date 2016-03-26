@@ -1,6 +1,6 @@
 let expect = chai.expect;
-import { proportinalHeight, proportinalWidth } from "./../../calculator/proportions";
-import { findPlateOrError } from "./../../calculator/plates";
+import { proportinalHeight, proportinalWidth } from "./../../logic/calculator/proportions";
+import { findPlateOrError } from "./../../logic/calculator/plates";
 
 describe("proportions", () => {
     describe("proportinalWidth should", () => {

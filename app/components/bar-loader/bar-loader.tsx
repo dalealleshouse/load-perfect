@@ -1,8 +1,8 @@
 import * as React from "react";
-import { IPlate } from "./../../calculator/plates";
+import { IPlate } from "./../../logic/calculator/plates";
 import { Bar } from "./../bar/bar";
-import { calculatePlates, IPlateCalculation } from "./../../calculator/plate-calculator";
-import { defaultLbsWeightTree, defaultKiloWeightTree } from  "./../../calculator/plates";
+import { calculatePlates, IPlateCalculation } from "./../../logic/calculator/plate-calculator";
+import { getDefaultPlates } from  "./../../logic/calculator/plates";
 
 interface IBarLoaderState {
     calculation?: IPlateCalculation;
@@ -10,6 +10,9 @@ interface IBarLoaderState {
     desiredWeight?: number;
     plateTree?: IPlate[];
 }
+
+const defaultLbsWeightTree = getDefaultPlates("lbs").valueOr(undefined);
+const defaultKiloWeightTree = getDefaultPlates("kilo").valueOr(undefined);
 
 export class BarLoader extends React.Component<{}, IBarLoaderState> {
     constructor() {

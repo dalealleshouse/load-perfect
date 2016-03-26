@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IPlate } from "./../../calculator/plates";
+import { IPlate } from "./../../logic/calculator/plates";
 import { Plate } from "./../plate/plate";
 
 import "!style!css!less!./bar.less";

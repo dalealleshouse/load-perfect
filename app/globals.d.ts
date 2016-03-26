@@ -1,5 +1,5 @@
 /// <reference path="../typings/browser.d.ts" />
-/// <reference path="../node_modules/tsmonad/dist/tsmonad.d.ts" />
+
 declare var require: {
     <T>(path: string): T;
     (paths: string[], callback: (...modules: any[]) => void): void;

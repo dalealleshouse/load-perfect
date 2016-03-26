@@ -31,11 +31,12 @@
     "jquery": "^2.2.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "tsmonad": "^0.4.1"
+    "tsmonad": "^0.5.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "eslint": "^2.5.1",
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
@@ -47,11 +48,11 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-webpack": "^1.7.0",
     "less": "^2.6.1",
-    "less-loader": "^2.2.2",
+    "less-loader": "^2.2.3",
     "mocha": "^2.4.5",
     "open-browser-webpack-plugin": "0.0.2",
-    "phantomjs-prebuilt": "^2.1.6",
-    "style-loader": "^0.13.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "style-loader": "^0.13.1",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.9",
     "uglify-js": "^2.6.2",

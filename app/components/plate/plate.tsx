@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IPlate } from "./../../calculator/plates";
-import { proportinalWidth, proportinalHeight } from "./../../calculator/proportions";
+import { IPlate } from "./../../logic/calculator/plates";
+import { proportinalWidth, proportinalHeight } from "./../../logic/calculator/proportions";
 
 import "!style!css!less!./plate.less";
 

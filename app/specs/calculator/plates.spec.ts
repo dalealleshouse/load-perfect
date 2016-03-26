@@ -1,32 +1,27 @@
+import * as TsMonad from "tsmonad";
 let expect = chai.expect;
-import * as tsm from "tsmonad";
-import { lbsPlates, kiloPlates, IPlate, findPlate, getPlates, defaultLbsWeightTree,
-    defaultKiloWeightTree, findPlateOrError } from "./../../calculator/plates";
+import { IPlate, findPlate, getPlates, getDefaultPlates, findPlateOrError } from "./../../logic/calculator/plates";
 
 describe("plates", () => {
-    function isNothing<T>(maybe: tsm.Maybe<T>) {
-        return maybe.equals(tsm.Maybe.nothing());
+    function isNothing<T>(maybe: TsMonad.Maybe<T>) {
+        return maybe.equals(TsMonad.Maybe.nothing());
     };
 
     describe("getPlates should", () => {
         it("return standard weight plates when asking for lbs", () => {
             let result = getPlates("lbs")
-                .caseOf({
-                    just: (v: IPlate[]) => v,
-                    nothing: () => null
-                });
+                .fmap(plates => plates.every(p => p.unit === "lbs"))
+                .valueOr(false);
 
-            expect(result).to.equal(lbsPlates);
+            expect(result).to.be.true;
         });
 
         it("return metric weight plates when asking for kilo", () => {
             let result = getPlates("kilo")
-                .caseOf({
-                    just: (v: IPlate[]) => v,
-                    nothing: () => null
-                });
+                .fmap(plates => plates.every(p => p.unit === "kilo"))
+                .valueOr(false);
 
-            expect(result).to.equal(kiloPlates);
+            expect(result).to.be.true;
         });
 
         it("should return Maybe.nothing when asking for null", () => {
@@ -53,22 +48,27 @@ describe("plates", () => {
                     nothing: () => null
                 });
 
-            // this should be doing a reference equal
-            expect(result).to.equal(lbsPlates[0]);
+            expect(result).to.eql({ unit: "lbs", weight: 100, color: "black", scaleHeight: false });
         });
     });
 
     describe("DefaultLbsWeightTree should", () => {
         it("have all lbs unit plates", () => {
-            let allStandardPlates = defaultLbsWeightTree.every(w => w.unit === "lbs");
-            expect(allStandardPlates).to.be.true;
+            let result = getDefaultPlates("lbs")
+                .fmap(plates => plates.every(w => w.unit === "lbs"))
+                .valueOr(false);
+
+            expect(result).to.be.true;
         });
     });
 
     describe("DefaultKiloWeightTree should", () => {
         it("have all kilo unit plates", () => {
-            let allStandardPlates = defaultKiloWeightTree.every(w => w.unit === "kilo");
-            expect(allStandardPlates).to.be.true;
+            let result = getDefaultPlates("kilo")
+                .fmap(plates => plates.every(w => w.unit === "kilo"))
+                .valueOr(false);
+
+            expect(result).to.be.true;
         });
     });
 });

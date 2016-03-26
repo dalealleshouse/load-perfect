@@ -1,12 +1,13 @@
 let expect = chai.expect;
 import "es6-shim";
-import "./../../global";
-import { IPlate, defaultLbsWeightTree, defaultKiloWeightTree, findPlateOrError } from "./../../calculator/plates";
-import { platesPerSide, minWeight, totalPlateWeight, calculatePlates } from "./../../calculator/plate-calculator";
-import { WeightUnit } from "./../../calculator/weight-units";
-import { StandardLbsBar } from "./../../calculator/bars";
+import { IPlate, findPlateOrError, getDefaultPlates } from "./../../logic/calculator/plates";
+import { platesPerSide, minWeight, totalPlateWeight, calculatePlates } from "./../../logic/calculator/plate-calculator";
+import { WeightUnit } from "./../../logic/calculator/weight-units";
+import { StandardLbsBar } from "./../../logic/calculator/bars";
 
 describe("plate calculator", () => {
+    const defaultLbsWeightTree = getDefaultPlates("lbs").valueOr(undefined);
+
     describe("minWeight should", () => {
         it("return 0 for empty or null weight tree", () => {
             expect(minWeight(null)).to.eql(0);
@@ -14,11 +15,19 @@ describe("plate calculator", () => {
         });
 
         it("return 2.5 from default lbs weight tree", () => {
-            expect(minWeight(defaultLbsWeightTree)).to.eql(2.5);
+            let result = getDefaultPlates("lbs")
+                .fmap(plates => minWeight(plates))
+                .valueOr(0);
+
+            expect(result).to.eql(2.5);
         });
 
         it("return 0.5 from default kilo weight tree", () => {
-            expect(minWeight(defaultKiloWeightTree)).to.eql(0.5);
+            let result = getDefaultPlates("kilo")
+                .fmap(plates => minWeight(plates))
+                .valueOr(0);
+
+            expect(result).to.eql(0.5);
         });
     });
 
