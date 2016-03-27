@@ -1,6 +1,6 @@
 import * as TsMonad from "tsmonad";
 let expect = chai.expect;
-import { IPlate, findPlate, getPlates, getDefaultPlates, findPlateOrError } from "./../../logic/calculator/plates";
+import { IPlate, findPlate, getPlates, getDefaultPlates, findPlateOrError } from "./../../calculator/plates";
 
 describe("plates", () => {
     function isNothing<T>(maybe: TsMonad.Maybe<T>) {
@@ -48,7 +48,7 @@ describe("plates", () => {
                     nothing: () => null
                 });
 
-            expect(result).to.eql({ unit: "lbs", weight: 100, color: "black", scaleHeight: false });
+            expect(result).to.eql({ unit: "lbs", weight: 100, color: "black" });
         });
     });
 

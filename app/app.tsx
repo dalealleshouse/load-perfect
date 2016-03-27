@@ -1,37 +1,32 @@
 import "file?name=[name].[ext]!./index.html";
 import "!style!css!less!./styles.less";
-import "es6-shim";
 import "bootstrap-webpack";
 
 import * as React from "react";
 import * as ReactDOM  from "react-dom";
-/// FLUX
-import { EventEmitter } from "./logic/flux/event-emitter";
-import { Dispatcher, IAction } from "./logic/flux/dispatcher";
-import { palteCalculatorStore } from "./logic/flux/plate-calculator-store";
-
-let d = new Dispatcher();
-d.register(action => {
-    switch (action.actionType) {
-        case "APP_START":
-            console.log("APP_START");
-    }
-});
-
-d.dispatch({
-    actionType: "APP_START",
-    data: "started"
-});
-
-
-//// FLUX
+import { store } from "./stores/app-store";
 
 import { BarLoader } from "./components/bar-loader/bar-loader";
+import { CalculatorInputs, ICalculatorInput } from "./components/calculator-inputs/calculator-inputs";
+import { calculatorAction } from "./actions/plate-calculator-actions";
 
+const onChanged = (change: ICalculatorInput) => {
+    const action = calculatorAction(change);
+    store.dispatch(action);
+};
 
-
-ReactDOM.render((
-    <div>
-        <BarLoader />
+const render = () => ReactDOM.render((
+    <div className="container">
+        <div className="row">
+            <div className="col-md-3">
+                <CalculatorInputs {...store.getState().plateCalculator} onChanged={onChanged} />
+            </div>
+            <div className="col-md-9">
+                <BarLoader {...store.getState().plateCalculator} />
+            </div>
+        </div>
     </div>
 ), document.getElementById("app"));
+
+render();
+store.subscribe(render);

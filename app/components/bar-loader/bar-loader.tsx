@@ -1,102 +1,27 @@
 import * as React from "react";
-import { IPlate } from "./../../logic/calculator/plates";
-import { Bar } from "./../bar/bar";
-import { calculatePlates, IPlateCalculation } from "./../../logic/calculator/plate-calculator";
-import { getDefaultPlates } from  "./../../logic/calculator/plates";
+import { Bar } from "./../Bar/bar";
+import { IPlateCalculation } from "./../../calculator/plate-calculator";
+import { WeightUnit } from "./../../calculator/weight-units";
 
-interface IBarLoaderState {
-    calculation?: IPlateCalculation;
-    barWeight?: number;
-    desiredWeight?: number;
-    plateTree?: IPlate[];
+interface IBarLoaderProperties {
+    plateCalculation: IPlateCalculation;
+    units: WeightUnit;
 }
 
-const defaultLbsWeightTree = getDefaultPlates("lbs").valueOr(undefined);
-const defaultKiloWeightTree = getDefaultPlates("kilo").valueOr(undefined);
+export const BarLoader = (props: IBarLoaderProperties) => {
+    if (!props || !props.plateCalculation || props.plateCalculation.requestedWeight === 0)
+        return (<Bar plates={[]} />);
 
-export class BarLoader extends React.Component<{}, IBarLoaderState> {
-    constructor() {
-        super();
-        this.state = {
-            calculation: { plates: [], actualWeight: 0, requestedWeight: 0 },
-            barWeight: 45,
-            plateTree: defaultLbsWeightTree
-        };
-    }
+    const displayWeight = (props.plateCalculation.actualWeight !== props.plateCalculation.requestedWeight) ?
+        (<div className="alert alert-warning" role="alert">
+            <span className="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+            Unable to calculate exact weight. Weight: <strong>{props.plateCalculation.actualWeight} {props.units}</strong>
+        </div>) :
+        (<p className="text-center"><mark>{props.plateCalculation.actualWeight} {props.units}</mark></p>);
 
-    loadBar = (plateTree: IPlate[], barWeight: number, desiredWeight: number) => {
-        let calcResult = calculatePlates(plateTree, barWeight, desiredWeight);
-        this.setState({ plateTree: plateTree, barWeight: barWeight, desiredWeight: desiredWeight, calculation: calcResult });
-    };
-
-    setBar = (event: any) => {
-        let weight = parseInt(event.target.value);
-        if (isNaN(weight))
-            return;
-
-        this.loadBar(this.state.plateTree, weight, this.state.desiredWeight);
-    };
-
-    setWeight = (event: any) => {
-        let weight = parseInt(event.target.value);
-        weight = (isNaN(weight)) ? 0 : weight;
-
-        this.loadBar(this.state.plateTree, this.state.barWeight, weight);
-    }
-
-    setUnits = (event: React.FormEvent) => {
-        let target = event.target as HTMLInputElement;
-        let plates = (target.value === "lbs") ? defaultLbsWeightTree : defaultKiloWeightTree;
-        this.loadBar(plates, this.state.barWeight, this.state.desiredWeight);
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-3">
-                        <form className="form-horizontal">
-                            <fieldset>
-                                <div className="form-group">
-                                    <label className="col-md-4 control-label" for="Weight Units">Weight Units</label>
-                                    <div className="col-md-4">
-                                        <label className="radio-inline" for="Weight Units-0">
-                                            <input type="radio" name="Weight Units" id="Weight Units-0" value="lbs" onClick={this.setUnits} defaultChecked />
-                                            lbs
-                                        </label>
-                                        <label className="radio-inline" for="Weight Units-1">
-                                            <input type="radio" name="Weight Units" id="Weight Units-1" value="kilo" onClick={this.setUnits} />
-                                            kilo
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label className="col-md-4 control-label" for="weight">Weight</label>
-                                    <div className="col-md-4">
-                                        <input onChange={this.setWeight} defaultValue={this.state.desiredWeight} id="weight" name="Weight" type="text" placeholder="Weight" className="form-control input-md" />
-                                        <span className="help-block">Weight</span>
-                                    </div>
-                                </div>
-
-
-                                <div className="form-group">
-                                    <label className="col-md-4 control-label" for="totalbarweight">Total Bar Weight</label>
-                                    <div className="col-md-4">
-                                        <input onChange={this.setBar} defaultValue={this.state.barWeight} id="totalbarweight" name="totalbarweight" type="text" placeholder="Total Bar Weight" className="form-control input-md" />
-                                        <span className="help-block">Bar weight (including collars)</span>
-                                    </div>
-                                </div>
-
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div className="col-md-9">
-                        <Bar plates={this.state.calculation.plates} />
-                        <span>ActualWeight: {this.state.calculation.actualWeight}</span>
-                    </div>
-                </div>
-            </div>);
-    }
-}
+    return (
+        <div>
+            <Bar plates={ props.plateCalculation.plates } />
+            {displayWeight}
+        </div>);
+};

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IPlate } from "./../../logic/calculator/plates";
-import { proportinalWidth, proportinalHeight } from "./../../logic/calculator/proportions";
+import { IPlate } from "./../../calculator/plates";
+import { proportinalWidth, proportinalHeight } from "./../../calculator/proportions";
 
 import "!style!css!less!./plate.less";
 
@@ -12,8 +12,8 @@ export class Plate extends React.Component<IPlateProperties, {}> {
     render() {
         let s: React.HTMLAttributes = {
             backgroundColor: this.props.plate.color,
-            width: proportinalWidth(this.props.plate, 60, 25),
-            height: proportinalHeight(this.props.plate, 198, 50)
+            width: proportinalWidth(60, 25)(this.props.plate),
+            height: proportinalHeight(198, 50)(this.props.plate)
         };
 
         return (<div className="plate" style={s}>

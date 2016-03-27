@@ -1,9 +1,9 @@
 let expect = chai.expect;
 import "es6-shim";
-import { IPlate, findPlateOrError, getDefaultPlates } from "./../../logic/calculator/plates";
-import { platesPerSide, minWeight, totalPlateWeight, calculatePlates } from "./../../logic/calculator/plate-calculator";
-import { WeightUnit } from "./../../logic/calculator/weight-units";
-import { StandardLbsBar } from "./../../logic/calculator/bars";
+import { IPlate, findPlateOrError, getDefaultPlates } from "./../../calculator/plates";
+import { platesPerSide, minWeight, totalPlateWeight, calculatePlates } from "./../../calculator/plate-calculator";
+import { WeightUnit } from "./../../calculator/weight-units";
+import { StandardLbsBar } from "./../../calculator/bars";
 
 describe("plate calculator", () => {
     const defaultLbsWeightTree = getDefaultPlates("lbs").valueOr(undefined);

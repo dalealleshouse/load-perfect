@@ -7,31 +7,30 @@ export interface IPlate {
     unit: WeightUnit;
     weight: number;
     color: PlateColor;
-    scaleHeight: boolean;
 }
 
 const lbsPlates: IPlate[] = [
-    { unit: "lbs", weight: 100, color: "black", scaleHeight: false },
-    { unit: "lbs", weight: 55, color: "red", scaleHeight: false },
-    { unit: "lbs", weight: 45, color: "blue", scaleHeight: false },
-    { unit: "lbs", weight: 35, color: "yellow", scaleHeight: true },
-    { unit: "lbs", weight: 25, color: "green", scaleHeight: true },
-    { unit: "lbs", weight: 10, color: "white", scaleHeight: true },
-    { unit: "lbs", weight: 5, color: "blue", scaleHeight: true },
-    { unit: "lbs", weight: 2.5, color: "green", scaleHeight: true }
+    { unit: "lbs", weight: 100, color: "black" },
+    { unit: "lbs", weight: 55, color: "red" },
+    { unit: "lbs", weight: 45, color: "blue" },
+    { unit: "lbs", weight: 35, color: "yellow" },
+    { unit: "lbs", weight: 25, color: "green" },
+    { unit: "lbs", weight: 10, color: "white" },
+    { unit: "lbs", weight: 5, color: "blue" },
+    { unit: "lbs", weight: 2.5, color: "green" }
 ];
 
 const kiloPlates: IPlate[] = [
-    { unit: "kilo", weight: 25, color: "red", scaleHeight: false },
-    { unit: "kilo", weight: 20, color: "blue", scaleHeight: false },
-    { unit: "kilo", weight: 15, color: "yellow", scaleHeight: false },
-    { unit: "kilo", weight: 10, color: "green", scaleHeight: false },
-    { unit: "kilo", weight: 5, color: "white", scaleHeight: true },
-    { unit: "kilo", weight: 2.5, color: "red", scaleHeight: true },
-    { unit: "kilo", weight: 2, color: "blue", scaleHeight: true },
-    { unit: "kilo", weight: 1.5, color: "yellow", scaleHeight: true },
-    { unit: "kilo", weight: 1, color: "green", scaleHeight: true },
-    { unit: "kilo", weight: 0.5, color: "white", scaleHeight: true }
+    { unit: "kilo", weight: 25, color: "red" },
+    { unit: "kilo", weight: 20, color: "blue" },
+    { unit: "kilo", weight: 15, color: "yellow" },
+    { unit: "kilo", weight: 10, color: "green" },
+    { unit: "kilo", weight: 5, color: "white" },
+    { unit: "kilo", weight: 2.5, color: "red" },
+    { unit: "kilo", weight: 2, color: "blue" },
+    { unit: "kilo", weight: 1.5, color: "yellow" },
+    { unit: "kilo", weight: 1, color: "green" },
+    { unit: "kilo", weight: 0.5, color: "white" }
 ];
 
 // How f'n awesome would it be if I could make the key type WeightUnit...
@@ -43,7 +42,7 @@ const plates: { [key: string]: IPlate[] } = {
 const getPlatesFromDictonary =
     (plateDictonary: { [Identifier: string]: IPlate[] }) =>
         (unit: WeightUnit) =>
-            (plateDictonary[unit]) ? TsMonad.Maybe.just(plateDictonary[unit]) : TsMonad.Maybe.nothing();;
+            (plateDictonary[unit]) ? TsMonad.Maybe.just(plateDictonary[unit]) : TsMonad.Maybe.nothing();
 
 export const getPlates = getPlatesFromDictonary(plates);
 

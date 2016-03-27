@@ -1,6 +1,7 @@
 {
   "ambientDependencies": {
     "chai": "registry:dt/chai#3.4.0+20160317120654",
+    "deep-freeze": "registry:dt/deep-freeze#0.0.0+20160317120654",
     "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#4de74cb527395c13ba20b438c3a7a419ad931f1c",
     "jquery": "registry:dt/jquery#1.10.0+20160303223636",
     "mocha": "registry:dt/mocha#2.2.5+20160317120654",
@@ -8,6 +9,7 @@
     "react-addons-create-fragment": "registry:dt/react-addons-create-fragment#0.14.0+20151014232131",
     "react-dom": "registry:dt/react-dom#0.14.0+20151118193745",
     "react-global": "registry:dt/react-global#0.14.0+20151105120114",
+    "redux": "registry:dt/redux#3.3.1+20160326112656",
     "tsmonad": "registry:dt/tsmonad#0.0.0+20160317120654"
   },
   "dependencies": {}

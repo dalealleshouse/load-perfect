@@ -19,8 +19,8 @@
         "watch": false,
         "noEmit": false
     },
-    "files": [
-        "app.tsx",
-        "globals.d.ts"
+    "exclude": [
+        "typings/main",
+        "typings/main.d.ts"
     ]
 }
