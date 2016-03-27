@@ -43,19 +43,15 @@ export const CalculatorInputs = (props: ICalculatorInputProperties) => {
                 kilo
             </label>
         </div>
-
-
-        <fieldset className="form-group">
-            <label htmlFor="weight">Weight</label>
-            <input onChange={changeWeight} defaultValue={props.requestedWeight} id="weight" name="Weight"
-                type="number" placeholder="Weight" className="form-control" />
-        </fieldset>
-
-
         <fieldset className="form-group">
             <label htmlFor="totalbarweight">Bar Weight <small>(including collars) </small></label>
             <input onChange={changeBarWeight} defaultValue={props.barWeight} id="totalbarweight" name="totalbarweight"
                 type="number" placeholder="Total Bar Weight" className="form-control" />
+        </fieldset>
+        <fieldset className="form-group">
+            <label htmlFor="weight">Weight</label>
+            <input onChange={changeWeight} defaultValue={props.requestedWeight} id="weight" name="Weight"
+                type="number" placeholder="Weight" className="form-control" />
         </fieldset>
     </form>);
 };

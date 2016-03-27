@@ -1,4 +1,5 @@
 import "file?name=[name].[ext]!./index.html";
+import "es6-shim";
 import "!style!css!less!./styles.less";
 import "bootstrap-webpack";
 
