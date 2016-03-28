@@ -4,7 +4,7 @@ import { proportinalWidth, proportinalHeight } from "./../../calculator/proporti
 
 import "!style!css!less!./plate.less";
 
-interface IPlateProperties extends React.Props<React.Component<IPlateProperties, {}>> {
+interface IPlateProperties extends React.Props<React.StatelessComponent<IPlateProperties>> {
     plate: IPlate;
 }
 

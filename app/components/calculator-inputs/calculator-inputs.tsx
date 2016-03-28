@@ -3,7 +3,7 @@ import { Bar } from "./../Bar/bar";
 import { IPlateCalculation } from "./../../calculator/plate-calculator";
 import { WeightUnit } from "./../../calculator/weight-units";
 
-interface ICalculatorInputProperties extends React.Props<React.Component<ICalculatorInputProperties, {}>> {
+interface ICalculatorInputProperties extends React.Props<React.StatelessComponent<ICalculatorInputProperties>> {
     units: WeightUnit;
     requestedWeight: number;
     barWeight: number;
@@ -17,14 +17,8 @@ export interface ICalculatorInput {
 }
 
 export const CalculatorInputs = ({ onChanged, barWeight, requestedWeight, units, children }: ICalculatorInputProperties) => {
-    const changeWeight = (event: React.FormEvent) =>
-        onChanged({ "requestedWeight": getInputValueAsInt(event.target as HTMLInputElement) });
-
-    const changeBarWeight = (event: React.FormEvent) =>
-        onChanged({ "barWeight": getInputValueAsInt(event.target as HTMLInputElement) });
-
-    const changeUnit = (event: React.FormEvent) =>
-        onChanged({ "units": (event.target as HTMLInputElement).value as WeightUnit });
+    let weightInput: HTMLInputElement = undefined;
+    let barWeightInput: HTMLInputElement = undefined;
 
     const getInputValueAsInt = (input: HTMLInputElement) => {
         const val = parseInt(input.value);
@@ -32,25 +26,24 @@ export const CalculatorInputs = ({ onChanged, barWeight, requestedWeight, units,
     };
 
     return (<form>
-        <label htmlFor="Weight Units">Weight Units</label>
         <div className="radio">
             <label className="radio-inline" htmlFor="Weight Units-0">
-                <input type="radio" name="Weight Units" id="Weight Units-0" value="lbs" onClick={changeUnit} defaultChecked />
+                <input type="radio" name="Weight Units" id="Weight Units-0" value="lbs" onClick={() => onChanged({ units: "lbs" }) } defaultChecked />
                 lbs
             </label>
             <label className="radio-inline" htmlFor="Weight Units-1">
-                <input type="radio" name="Weight Units" id="Weight Units-1" value="kilo" onClick={changeUnit} />
+                <input type="radio" name="Weight Units" id="Weight Units-1" value="kilo" onClick={() => onChanged({ units: "kilo" }) } />
                 kilo
             </label>
         </div>
         <fieldset className="form-group">
             <label htmlFor="totalbarweight">Bar Weight <small>(including collars) </small></label>
-            <input onChange={changeBarWeight} defaultValue={barWeight} id="totalbarweight" name="totalbarweight"
-                type="number" placeholder="Total Bar Weight" className="form-control" />
+            <input ref={n => barWeightInput = n} onChange={ () => onChanged({ barWeight: getInputValueAsInt(barWeightInput) }) } defaultValue={barWeight} name="totalbarweight"
+                type="number" placeholder="Bar Weight (including collars)" className="form-control" />
         </fieldset>
         <fieldset className="form-group">
             <label htmlFor="weight">Weight</label>
-            <input onChange={changeWeight} defaultValue={requestedWeight} id="weight" name="Weight"
+            <input ref={n => weightInput = n } onChange={ () => onChanged({ requestedWeight: getInputValueAsInt(weightInput) }) } defaultValue={requestedWeight} name="Weight"
                 type="number" placeholder="Weight" className="form-control" />
         </fieldset>
     </form>);

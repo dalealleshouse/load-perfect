@@ -3,7 +3,7 @@ import { Bar } from "./../Bar/bar";
 import { IPlateCalculation } from "./../../calculator/plate-calculator";
 import { WeightUnit } from "./../../calculator/weight-units";
 
-interface IBarLoaderProperties extends React.Props<React.Component<IBarLoaderProperties, {}>> {
+interface IBarLoaderProperties extends React.Props<React.StatelessComponent<IBarLoaderProperties>> {
     plateCalculation: IPlateCalculation;
     units: WeightUnit;
 }
