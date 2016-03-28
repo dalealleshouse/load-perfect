@@ -7,7 +7,7 @@ let barLeft = require<string>("./bar-left.png");
 let bar = require<string>("./bar.png");
 let barRight = require<string>("./bar-right.png");
 
-interface IBarProperties {
+interface IBarProperties extends React.Props<React.Component<IBarProperties, {}>> {
     plates: IPlate[];
 }
 

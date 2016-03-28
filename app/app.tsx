@@ -20,7 +20,7 @@ const render = () => ReactDOM.render((
     <div className="container">
         <div className="row">
             <div className="col-md-3">
-                <CalculatorInputs {...store.getState().plateCalculator} onChanged={onChanged} />
+                <CalculatorInputs {...store.getState().plateCalculator} onChanged={onChanged} >will this work?</CalculatorInputs>
             </div>
             <div className="col-md-9">
                 <BarLoader {...store.getState().plateCalculator} />

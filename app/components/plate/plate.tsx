@@ -4,22 +4,20 @@ import { proportinalWidth, proportinalHeight } from "./../../calculator/proporti
 
 import "!style!css!less!./plate.less";
 
-interface IPlateProperties {
+interface IPlateProperties extends React.Props<React.Component<IPlateProperties, {}>> {
     plate: IPlate;
 }
 
-export class Plate extends React.Component<IPlateProperties, {}> {
-    render() {
-        let s: React.HTMLAttributes = {
-            backgroundColor: this.props.plate.color,
-            width: proportinalWidth(60, 25)(this.props.plate),
-            height: proportinalHeight(198, 50)(this.props.plate)
-        };
+export const Plate = ({ plate }: IPlateProperties) => {
+    let s: React.HTMLAttributes = {
+        backgroundColor: plate.color,
+        width: proportinalWidth(60, 25)(plate),
+        height: proportinalHeight(198, 50)(plate)
+    };
 
-        return (<div className="plate" style={s}>
-            <span className="badge">
-                {this.props.plate.weight}
-            </span>
-        </div>);
-    }
-}
+    return (<div className="plate" style={s}>
+        <span className="badge">
+            {plate.weight}
+        </span>
+    </div>);
+};

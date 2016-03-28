@@ -3,7 +3,7 @@ import { Bar } from "./../Bar/bar";
 import { IPlateCalculation } from "./../../calculator/plate-calculator";
 import { WeightUnit } from "./../../calculator/weight-units";
 
-interface ICalculatorInputProperties {
+interface ICalculatorInputProperties extends React.Props<React.Component<ICalculatorInputProperties, {}>> {
     units: WeightUnit;
     requestedWeight: number;
     barWeight: number;
@@ -16,15 +16,15 @@ export interface ICalculatorInput {
     barWeight?: number;
 }
 
-export const CalculatorInputs = (props: ICalculatorInputProperties) => {
+export const CalculatorInputs = ({ onChanged, barWeight, requestedWeight, units, children }: ICalculatorInputProperties) => {
     const changeWeight = (event: React.FormEvent) =>
-        props.onChanged({ "requestedWeight": getInputValueAsInt(event.target as HTMLInputElement) });
+        onChanged({ "requestedWeight": getInputValueAsInt(event.target as HTMLInputElement) });
 
     const changeBarWeight = (event: React.FormEvent) =>
-        props.onChanged({ "barWeight": getInputValueAsInt(event.target as HTMLInputElement) });
+        onChanged({ "barWeight": getInputValueAsInt(event.target as HTMLInputElement) });
 
     const changeUnit = (event: React.FormEvent) =>
-        props.onChanged({ "units": (event.target as HTMLInputElement).value as WeightUnit });
+        onChanged({ "units": (event.target as HTMLInputElement).value as WeightUnit });
 
     const getInputValueAsInt = (input: HTMLInputElement) => {
         const val = parseInt(input.value);
@@ -45,12 +45,12 @@ export const CalculatorInputs = (props: ICalculatorInputProperties) => {
         </div>
         <fieldset className="form-group">
             <label htmlFor="totalbarweight">Bar Weight <small>(including collars) </small></label>
-            <input onChange={changeBarWeight} defaultValue={props.barWeight} id="totalbarweight" name="totalbarweight"
+            <input onChange={changeBarWeight} defaultValue={barWeight} id="totalbarweight" name="totalbarweight"
                 type="number" placeholder="Total Bar Weight" className="form-control" />
         </fieldset>
         <fieldset className="form-group">
             <label htmlFor="weight">Weight</label>
-            <input onChange={changeWeight} defaultValue={props.requestedWeight} id="weight" name="Weight"
+            <input onChange={changeWeight} defaultValue={requestedWeight} id="weight" name="Weight"
                 type="number" placeholder="Weight" className="form-control" />
         </fieldset>
     </form>);
