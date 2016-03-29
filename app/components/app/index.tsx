@@ -32,33 +32,13 @@ let ConnectCalculatorInputs = connect(mapStateToProps, mapDispatchToProps)(Calcu
 const mapBarLoaderStateToProps = (state: IApplicationState) => { return { plateCalculation: state.plateCalculator.plateCalculation }; };
 let ConnectBarLoader = connect(mapBarLoaderStateToProps)(BarLoader as any);
 
-export class App extends React.Component<React.Props<App>, {}> {
-    private unsubscribe: Function;
-    context: IAppContext;
-
-    static contextTypes = {
-        store: React.PropTypes.object
-    };
-
-    componentDidMount() {
-        this.unsubscribe = this.context.store.subscribe(() => this.forceUpdate());
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    render() {
-        return (<div className="container">
-            <div className="row">
-                <div className="col-md-3">
-                    <ConnectCalculatorInputs />
-                </div>
-                <div className="col-md-9">
-                    <ConnectBarLoader />
-                </div>
-            </div>
-        </div>);
-    }
-};
-
+export const App = () => (<div className="container">
+    <div className="row">
+        <div className="col-md-3">
+            <ConnectCalculatorInputs />
+        </div>
+        <div className="col-md-9">
+            <ConnectBarLoader />
+        </div>
+    </div>
+</div>);
