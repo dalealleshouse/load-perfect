@@ -51,6 +51,7 @@
     "mocha": "^2.4.5",
     "open-browser-webpack-plugin": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
+    "react-redux": "^4.4.1",
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.9",
